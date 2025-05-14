@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gif-history',
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './gif-history.component.css'
 })
 export default class GifHistoryComponent {
+
+
+  query = inject(ActivatedRoute)
 
 }
