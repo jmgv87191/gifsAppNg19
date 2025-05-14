@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-gif-history',
@@ -10,6 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 export default class GifHistoryComponent {
 
 
-  query = inject(ActivatedRoute)
+  query = toSignal( inject(ActivatedRoute).params.pipe(
+    map( params => params['query'] )
+  ))
 
 }
+
+
